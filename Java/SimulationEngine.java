@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Algo {
+public class SimulationEngine.java {
 
     private static Random rng = new Random(67); //For reproducibility
     private static ArrayList<Patient> patients = new ArrayList<>();
