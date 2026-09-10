@@ -414,7 +414,7 @@ public class SimulationEngine {
     public static double bmi(Patient p, double latencyDecayRate) {
         double bmiZ = p.normalizeBMI(); //Z-score
         double ORmax = 1.26; //Peak OR at age 15
-        double a = Math.exp(k * Math.max(p.age - 15, 0)) ; //Decay factor with age
+        double a = Math.exp(latencyDecayRate * Math.max(p.age - 15, 0));
 
         double effectiveOR = Math.max(1.0 + (ORmax - 1.0) * a, 1.01); //Ensure OR does not go below CI
         double b = Math.log(effectiveOR) * bmiZ;
