@@ -306,49 +306,28 @@ public class SimulationEngine {
     }
 
     public static double linearPredictor(Patient p, double k) {
-        double risk = 0.0;
+    double baselineContribution = baseline(p);
+    double geneticsContribution = genetics(p);
 
-        ArrayList<Boolean> testing = new ArrayList<>();
+    double smokingContribution = smoking(p);
+    double smokingGeneticsContribution =
+            sgInteraction(p, smokingContribution, geneticsContribution);
 
-        //Baseline risk
-        double r = baseline(p);
-        //Index 0
-        p.features.add(r);
-        testing.add(true);
+    double ageContribution = age(p);
+    double bmiContribution = bmi(p, k);
 
-        //Genetics contribution
-        double g = genetics(p);
-        //Index 1
-        p.features.add(g);
-        testing.add(true);
+    p.features.add(baselineContribution);
+    p.features.add(geneticsContribution);
+    p.features.add(smokingGeneticsContribution);
+    p.features.add(ageContribution);
+    p.features.add(bmiContribution);
 
-        //Smoking-genetics interaction
-        double s = smoking(p);
-        double sg = sgInteraction(p, s, g);
-        //Index 2
-        p.features.add(sg);
-        testing.add(true); 
-
-        //Age contribution
-        double a = age(p);
-        //Index 3
-        p.features.add(a);
-        testing.add(true);
-
-        //BMI contribution
-        double b = bmi(p, k);
-        //Index 4
-        p.features.add(b);
-        testing.add(true);
-
-        //Sum all features
-        int i = 0;
-        for (double feature : p.features) {
-            if (testing.get(i)) {
-                risk += feature;
-            }
-            i++;
-        }
+    return baselineContribution
+            + geneticsContribution
+            + smokingGeneticsContribution
+            + ageContribution
+            + bmiContribution;
+}
 
         return risk;
     }
