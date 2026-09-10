@@ -284,13 +284,13 @@ public class SimulationEngine {
         System.out.printf("Average Risk: %.4f (95%% CI: %.4f - %.4f)%n", risk * 100, ciLowerRisk * 100, ciUpperRisk * 100);
         System.out.printf("Prevalence: %.4f (95%% CI: %.4f - %.4f)%n", prevalence * 100, ciLower * 100, ciUpper * 100);
         System.out.printf("Prevalence Age <25: %.4f (95%% CI: %.4f - %.4f)%n", prevalenceAge1 * 100, ciLowerAge1 * 100, ciUpperAge1 * 100);
-        System.out.printf("Prevalence Age 20-54: %.4f (95%% CI: %.4f - %.4f)%n", prevalenceAge2 * 100, ciLowerAge2 * 100, ciUpperAge2 * 100);
+        System.out.printf("Prevalence Age 25-54: %.4f (95%% CI: %.4f - %.4f)%n", prevalenceAge2 * 100, ciLowerAge2 * 100, ciUpperAge2 * 100);
         System.out.printf("Prevalence Age 55+: %.4f (95%% CI: %.4f - %.4f)%n", prevalenceAge3 * 100, ciLowerAge3 * 100, ciUpperAge3 * 100);
         System.out.println("---------------------------------------------------");
         System.out.println("GBD U.S. results for comparison:");
         System.out.printf("Prevalence: %.4f (95%% CI: %.4f - %.4f)%n", 0.0046 * 100, 0.0043 * 100, 0.0050 * 100);
         System.out.printf("Prevalence Age <25: %.4f (95%% CI: %.4f - %.4f)%n", 0.0007 * 100, 0.0006 * 100, 0.0008 * 100);
-        System.out.printf("Prevalence Age 20-54: %.4f (95%% CI: %.4f - %.4f)%n", 0.0028 * 100, 0.0024 * 100, 0.0032 * 100);
+        System.out.printf("Prevalence Age 25-54: %.4f (95%% CI: %.4f - %.4f)%n", 0.0028 * 100, 0.0024 * 100, 0.0032 * 100);
         System.out.printf("Prevalence Age 55+: %.4f (95%% CI: %.4f - %.4f)%n", 0.0102 * 100, 0.0092 * 100, 0.0112 * 100);
         System.out.println("---------------------------------------------------");
         System.out.printf("Average BMI among cases: %.2f (95%% CI: %.2f - %.2f)%n", avgBmi, ciLowerBmi, ciUpperBmi);
