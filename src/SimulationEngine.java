@@ -90,7 +90,7 @@ public class SimulationEngine {
 
     public static void simulate(String filename) throws Exception {
 
-        int trials = 2_500; //Number of trials for prevalence calculation
+        int trials = BOOTSTRAP_TRIALS; //Number of bootstrap trials
         double[] riskResults = new double[trials];
         double[] prevalenceResults = new double[trials];
         double[] age1PrevalenceResults = new double[trials];
