@@ -12,10 +12,15 @@ public class SimulationEngine {
     @SuppressWarnings("unused")
     private static double decayRate = -0.065; //Decay rate for BMI OR with age
 
-  public static void main(String[] args) throws Exception {
-    generatePatients(27, "generated_patients.csv", decayRate);
-    simulate("simulation_results.csv");
-    }   
+ public static void main(String[] args) throws Exception {
+    File outputDir = new File("outputs");
+    if (!outputDir.exists()) {
+        outputDir.mkdirs();
+    }
+
+    generatePatients(27, "outputs/generated_patients.csv", decayRate);
+    simulate("outputs/simulation_results.csv");
+}
     
     //Generate synthetic patients
     public static void generatePatients(int mean, String filename, double k) throws Exception {
