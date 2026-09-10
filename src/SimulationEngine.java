@@ -27,7 +27,7 @@ public class SimulationEngine {
     }
     
     //Generate synthetic patients
-    public static void generatePatients(int mean, String filename, double k) throws Exception {
+    public static void generatePatients(int mean, String filename, double latencyDecayRate) throws Exception {
         /*
         Works on 1,000,000 patients in ~2 minutes
         Works on 250,000 patients in ~30 seconds
@@ -38,7 +38,7 @@ public class SimulationEngine {
         for (int i = 0; i < n; i++) {
             Patient p = new Patient(i, mean);
             p.setORS();
-            double z = linearPredictor(p, k);
+            double z = linearPredictor(p, latencyDecayRate);
             double risk = sigmoid(z);
             p.riskAssessment = risk;
             patients.add(p);
@@ -305,7 +305,7 @@ public class SimulationEngine {
         System.out.println("---------------------------------------------------");
     }
 
-    public static double linearPredictor(Patient p, double k) {
+    public static double linearPredictor(Patient p, double latencyDecayRate) {
     double baselineContribution = baseline(p);
     double geneticsContribution = genetics(p);
 
@@ -314,7 +314,7 @@ public class SimulationEngine {
             sgInteraction(p, smokingContribution, geneticsContribution);
 
     double ageContribution = age(p);
-    double bmiContribution = bmi(p, k);
+    double bmiContribution = bmi(p, latencyDecayRate);
 
     p.features.add(baselineContribution);
     p.features.add(geneticsContribution);
@@ -411,7 +411,7 @@ public class SimulationEngine {
     }
 
     //BMI contribution
-    public static double bmi(Patient p, double k) {
+    public static double bmi(Patient p, double latencyDecayRate) {
         double bmiZ = p.normalizeBMI(); //Z-score
         double ORmax = 1.26; //Peak OR at age 15
         double a = Math.exp(k * Math.max(p.age - 15, 0)) ; //Decay factor with age
