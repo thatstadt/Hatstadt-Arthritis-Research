@@ -329,9 +329,6 @@ public class SimulationEngine {
             + bmiContribution;
 }
 
-        return risk;
-    }
-
     public static double sigmoid(double z) {
         return 1.0 / (1.0 + Math.exp(-z));
     }
