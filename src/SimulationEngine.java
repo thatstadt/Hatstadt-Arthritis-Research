@@ -3,14 +3,18 @@ import java.util.*;
 
 public class SimulationEngine {
 
-    private static Random rng = new Random(67); //For reproducibility
+    private static Random rng = new Random(RANDOM_SEED); //For reproducibility
     private static ArrayList<Patient> patients = new ArrayList<>();
     private static ArrayList<Patient> ageGroup1 = new ArrayList<>(); //Age <25
     private static ArrayList<Patient> ageGroup2 = new ArrayList<>(); //Age 25-54
     private static ArrayList<Patient> ageGroup3 = new ArrayList<>(); //Age 55+
-    private static int n = 1_000_000; //Number of patients to simulate
-    @SuppressWarnings("unused")
-    private static double decayRate = -0.065; //Decay rate for BMI OR with age
+   private static final int POPULATION_SIZE = 1_000_000;
+private static final int BOOTSTRAP_TRIALS = 2_500;
+private static final int RANDOM_SEED = 67;
+private static final double BASELINE_BMI_MEAN = 27.0;
+private static final double LATENCY_DECAY_RATE = -0.065;
+
+private static int n = POPULATION_SIZE;
 
  public static void main(String[] args) throws Exception {
         File outputDir = new File("outputs");
@@ -18,7 +22,7 @@ public class SimulationEngine {
             outputDir.mkdirs();
         }
 
-        generatePatients(27, "outputs/generated_patients.csv", decayRate);
+     generatePatients((int) BASELINE_BMI_MEAN, "outputs/generated_patients.csv", LATENCY_DECAY_RATE);
         simulate("outputs/simulation_results.csv");
     }
     
