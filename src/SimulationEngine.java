@@ -12,10 +12,9 @@ public class SimulationEngine {
     @SuppressWarnings("unused")
     private static double decayRate = -0.065; //Decay rate for BMI OR with age
 
-    public static void main(String[] args) throws Exception {
-        //generatePatients(27, "Dataset.csv", decayRate);
-        readPatients("Dataset5.csv");
-        simulate("Results5.csv");
+  public static void main(String[] args) throws Exception {
+    generatePatients(27, "generated_patients.csv", decayRate);
+    simulate("simulation_results.csv");
     }   
     
     //Generate synthetic patients
