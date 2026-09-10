@@ -3,26 +3,26 @@ import java.util.*;
 
 public class SimulationEngine {
 
+    private static final int POPULATION_SIZE = 1_000_000;
+    private static final int BOOTSTRAP_TRIALS = 2_500;
+    private static final int RANDOM_SEED = 67;
+    private static final double BASELINE_BMI_MEAN = 27.0;
+    private static final double LATENCY_DECAY_RATE = -0.065;
+
     private static Random rng = new Random(RANDOM_SEED); //For reproducibility
     private static ArrayList<Patient> patients = new ArrayList<>();
     private static ArrayList<Patient> ageGroup1 = new ArrayList<>(); //Age <25
     private static ArrayList<Patient> ageGroup2 = new ArrayList<>(); //Age 25-54
     private static ArrayList<Patient> ageGroup3 = new ArrayList<>(); //Age 55+
-   private static final int POPULATION_SIZE = 1_000_000;
-private static final int BOOTSTRAP_TRIALS = 2_500;
-private static final int RANDOM_SEED = 67;
-private static final double BASELINE_BMI_MEAN = 27.0;
-private static final double LATENCY_DECAY_RATE = -0.065;
+    private static int n = POPULATION_SIZE;
 
-private static int n = POPULATION_SIZE;
-
- public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
         File outputDir = new File("outputs");
         if (!outputDir.exists()) {
             outputDir.mkdirs();
         }
 
-     generatePatients((int) BASELINE_BMI_MEAN, "outputs/generated_patients.csv", LATENCY_DECAY_RATE);
+        generatePatients((int) BASELINE_BMI_MEAN, "outputs/generated_patients.csv", LATENCY_DECAY_RATE);
         simulate("outputs/simulation_results.csv");
     }
     
