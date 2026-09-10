@@ -295,12 +295,12 @@ public class SimulationEngine {
         System.out.println("---------------------------------------------------");
         System.out.printf("Average BMI among cases: %.2f (95%% CI: %.2f - %.2f)%n", avgBmi, ciLowerBmi, ciUpperBmi);
         System.out.printf("Average BMI among cases Age <25: %.2f (95%% CI: %.2f - %.2f)%n", avgBmi1, ciLowerBmi1, ciUpperBmi1);
-        System.out.printf("Average BMI among cases Age 20-54: %.2f (95%% CI: %.2f - %.2f)%n", avgBmi2, ciLowerBmi2, ciUpperBmi2);
+        System.out.printf("Average BMI among cases Age 25-54: %.2f (95%% CI: %.2f - %.2f)%n", avgBmi2, ciLowerBmi2, ciUpperBmi2);
         System.out.printf("Average BMI among cases Age 55+: %.2f (95%% CI: %.2f - %.2f)%n", avgBmi3, ciLowerBmi3, ciUpperBmi3);
         System.out.println("---------------------------------------------------");
         System.out.printf("Obesity Prevalence among cases: %.4f (95%% CI: %.4f - %.4f)%n", avgObesity, ciLowerObesity, ciUpperObesity);
         System.out.printf("Obesity Prevalence among cases Age <25: %.4f (95%% CI: %.4f - %.4f)%n", avgObesity1, ciLowerObesity1, ciUpperObesity1);
-        System.out.printf("Obesity Prevalence among cases Age 20-54: %.4f (95%% CI: %.4f - %.4f)%n", avgObesity2, ciLowerObesity2, ciUpperObesity2);
+        System.out.printf("Obesity Prevalence among cases Age 25-54: %.4f (95%% CI: %.4f - %.4f)%n", avgObesity2, ciLowerObesity2, ciUpperObesity2);
         System.out.printf("Obesity Prevalence among cases Age 55+: %.4f (95%% CI: %.4f - %.4f)%n", avgObesity3, ciLowerObesity3, ciUpperObesity3);
         System.out.println("---------------------------------------------------");
     }
